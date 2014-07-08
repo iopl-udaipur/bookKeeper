@@ -1,0 +1,30 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+$lang['issue_book_manage']			= 'Manage Books Issued';
+$lang['issue_book_edit']				= 'Edit';
+$lang['issue_book_true']				= 'True';
+$lang['issue_book_false']				= 'False';
+$lang['issue_book_create']			= 'Create';
+$lang['issue_book_list']				= 'List';
+$lang['issue_book_new']				= 'New';
+$lang['issue_book_edit_text']			= 'Edit this to suit your needs';
+$lang['issue_book_no_records']			= 'There aren\'t any record in the system.';
+$lang['issue_book_create_new']			= 'Create a new issue_book.';
+$lang['issue_book_create_success']			= 'issue_book successfully created.';
+$lang['issue_book_create_failure']			= 'There was a problem issuing the book: ';
+$lang['issue_book_create_new_button']			= 'Issue Book';
+$lang['issue_book_invalid_id']			= 'Invalid ID.';
+$lang['issue_book_edit_success']			= 'Issue detail successfully edited.';
+$lang['issue_book_edit_failure']			= 'There was a problem editing the issue detail: ';
+$lang['issue_book_delete_success']			= 'record(s) successfully deleted.';
+$lang['issue_book_delete_failure']			= 'We could not delete the record: ';
+$lang['issue_book_delete_error']			= 'You have not selected any records to delete.';
+$lang['issue_book_actions']			= 'Actions';
+$lang['issue_book_cancel']			= 'Cancel';
+$lang['issue_book_delete_record']			= 'Delete this Record';
+$lang['issue_book_delete_confirm']			= 'Are you sure you want to delete this record?';
+$lang['issue_book_edit_heading']			= 'Edit Issue Detail';
+
+// Activities
+$lang['issue_book_act_create_record']			= 'Created record with ID';
+$lang['issue_book_act_edit_record']			= 'Updated record with ID';
+$lang['issue_book_act_delete_record']			= 'Deleted record with ID';
