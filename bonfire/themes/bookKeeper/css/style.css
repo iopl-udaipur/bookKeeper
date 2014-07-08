@@ -1,0 +1,11 @@
+.alert-error {
+    background-color: #F2DEDE;
+    border-color: #EBCCD1;
+    color: #B94A48;
+}
+.alert-error hr {
+    border-top-color: #E4B9C0;
+}
+.alert-error .alert-link {
+    color: #953B39;
+}
