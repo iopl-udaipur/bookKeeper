@@ -1,7 +1,7 @@
 <?php echo theme_view('parts/_header'); ?>
 <div class="row">
 	<div class="btn-group btn-group-justified">
-		<a class="btn btn-primary" href="<?php echo site_url('/books/create')?>">
+		<a class="btn btn-primary" href="<?php echo site_url('/books/create_full')?>">
 			<i class="fa fa-2x fa-book"></i> New Book
 		</a>
 		<a class="btn btn-primary" href="<?php echo site_url('/student/create')?>">
