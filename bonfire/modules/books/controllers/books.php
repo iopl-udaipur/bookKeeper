@@ -234,6 +234,13 @@ class Books extends Authenticated_Controller {
 						Template::set_message(lang('books_create_failure') . $this->books_model->error, 'error');
 					}
 				}
+				else 
+				{
+						$this->db->trans_commit();
+						
+						Template::set_message(lang('books_create_success'), 'success');
+						Template::redirect('/books');
+				}
 //================================================================
 			}
 			else
@@ -486,22 +493,27 @@ class Books extends Authenticated_Controller {
 			
 			$temp['book_id']		= $book_id;
 			$temp['book_uid']		= $_POST['book_copies_book_uid'][$i];
-			$temp['purchase_date']	= $_POST['book_copies_purchase_date'][$i];
+			$temp['purchase_date']	= $_POST['book_copies_purchase_date'][$i]?$_POST['book_copies_purchase_date'][$i]:'0-0-0';
 			$temp['purchase_by']	= $_POST['book_copies_purchase_by'][$i];
 			$temp['donated']		= $_POST['book_copies_donated'][$i];
-			$temp['price']			= $_POST['book_price'][$i];
+			$temp['price']			= $_POST['book_price'][$i]?$_POST['book_price'][$i]:0;
 			array_push($data, $temp);
 			
 			$temp_shelf['book_copy_id'] =  $_POST['book_copies_book_uid'][$i];
 			$temp_shelf['shelf_id'] =  $_POST['shelf_detail_shelf_id'][$i];
 			
-			array_push($data_rack, $temp_shelf);
+			
+			if(!empty($temp_shelf))
+				array_push($data_rack, $temp_shelf);
 		}
 		
 		if($this->book_copies_model->add_book_quantity($data))
 		{
-			$this->load->model('rack/shelf_detail_model', null, true);
-			return $this->shelf_detail_model->add_multi_book_to_shelf($data_rack);
+			if(!empty($data_rack))
+			{
+				$this->load->model('rack/shelf_detail_model', null, true);
+				return $this->shelf_detail_model->add_multi_book_to_shelf($data_rack);
+			}
 		}
 		else 
 		{
@@ -542,13 +554,13 @@ class Books extends Authenticated_Controller {
 		}
 
 
-		$this->form_validation->set_rules('books_isbn','ISBN','required|trim|max_length[100]');
-		$this->form_validation->set_rules('books_title','Title','trim|max_length[500]');
+		$this->form_validation->set_rules('books_isbn','ISBN','trim|max_length[100]');
+		$this->form_validation->set_rules('books_title','Title','required|trim|max_length[500]');
 		$this->form_validation->set_rules('books_author','Author','trim|max_length[50]');
 		$this->form_validation->set_rules('books_publisher','Publisher','trim|max_length[50]');
 		$this->form_validation->set_rules('books_year','Year','trim|max_length[50]');
-		$this->form_validation->set_rules('books_class_name','Class','required|trim|max_length[50]');
-		$this->form_validation->set_rules('books_category_name','Category','required|trim|max_length[50]');
+		$this->form_validation->set_rules('books_class_name','Class','trim|max_length[50]');
+		$this->form_validation->set_rules('books_category_name','Category','trim|max_length[50]');
 
 		if ($this->form_validation->run() === FALSE)
 		{
