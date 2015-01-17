@@ -18,6 +18,12 @@ class Book_copies_model extends BF_Model {
 		return $this->find_all();
 	}
 	
+	/**
+	 * used in:-
+	 * book/index
+	 * 
+	 * used to get number of book-copies available
+	 */
 	public function get_num_of_copies_each_book()
 	{
 		$query = "
@@ -67,6 +73,12 @@ class Book_copies_model extends BF_Model {
 		return $this->db->insert_batch($this->table, $data);
 	}
 	
+	/**
+	 * used in:-
+	 * book/delete
+	 * 
+	 * @param unknown_type $book_id
+	 */
 	public function check_if_book_copies_exist($book_id)
 	{
 		$query = "

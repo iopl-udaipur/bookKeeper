@@ -84,6 +84,11 @@ class Books extends Authenticated_Controller {
 		Template::render();
 	}
 	
+	/**
+	 * function to delete book
+	 * 
+	 * @param $id
+	 */
 	public function delete($id)
 	{
 
@@ -109,18 +114,6 @@ class Books extends Authenticated_Controller {
 	
 	public function delete_book_copy($book_id,$id)
 	{
-		$student_category_list = $this->books_model->get_category_list();
-		$student_category_list_arr = array(''=>'select category');
-		foreach ($student_category_list as $key) {
-			array_push($student_category_list_arr,$key->category_name);
-		}
-		$student_class_list = $this->books_model->get_class_list();
-		$student_class_list_arr = array(''=>'select class');
-		foreach ($student_class_list as $key) {
-			array_push($student_class_list_arr,$key->class_name);
-		}
-		Template::set('student_category_list',$student_category_list_arr);
-		Template::set('student_class_list',$student_class_list_arr);
 
 		$this->load->model('issue_book/issue_book_model', null, true);
 		if($this->issue_book_model->check_for_issued_book($id))

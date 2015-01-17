@@ -95,6 +95,10 @@ class Books_model extends BF_Model {
 		return parent::find_all();
 	}
 
+	/**
+	 * used in:-
+	 * 
+	 */
 	public function get_category_list(){
 		$this->db->distinct();
 		parent::select('category_name');
